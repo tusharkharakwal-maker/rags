@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="styles.css" />
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script defer src="chat-config.js"></script>
     <script defer src="script.js"></script>
   </head>
   <body class="ma0">
@@ -133,35 +132,12 @@
           <p class="eyebrow">YOUR TURN</p>
           <h2 id="reply-title">I'll wait right here.</h2>
           <p class="reply-prompt">Pick the answer that feels right. Your pigeon will carry it back.</p>
-          <button class="copy-invite" id="copy-invite" type="button">Copy private invitation link</button>
           <div class="reply-actions flex flex-wrap justify-center">
             <button class="reply-button reply-primary" type="button" data-reply="I'd love to spend an afternoon with you. Let's pick a day!">I'd love to</button>
             <button class="reply-button reply-secondary" type="button" data-reply="I'd like that, but could we choose another day?">Could we pick another day?</button>
           </div>
           <p class="reply-status" id="reply-status" role="status" aria-live="polite"></p>
           <button class="copy-again dn" id="copy-again" type="button">Copy my reply again</button>
-          <section class="chat-panel" id="chat-panel" aria-labelledby="chat-title" hidden>
-            <div class="chat-heading">
-              <div>
-                <p class="eyebrow">A LITTLE CONVERSATION</p>
-                <h3 id="chat-title">Stay and chat</h3>
-              </div>
-              <p class="chat-connection" id="chat-connection" role="status">Connecting…</p>
-            </div>
-            <ol class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions text">
-              <li class="chat-empty" id="chat-empty">Your first message will start things off.</li>
-            </ol>
-            <form class="chat-form" id="chat-form">
-              <label class="chat-name-label" for="chat-name">Your name</label>
-              <input class="chat-name" id="chat-name" name="name" type="text" maxlength="24" autocomplete="nickname" value="You" />
-              <label class="chat-message-label" for="chat-input">Write a message</label>
-              <div class="chat-compose">
-                <input class="chat-input" id="chat-input" name="message" type="text" maxlength="500" autocomplete="off" placeholder="Type a little message…" />
-                <button class="chat-send" type="submit">Send</button>
-              </div>
-            </form>
-            <p class="chat-footnote">This private conversation is available to people with the invitation link.</p>
-          </section>
           <p class="signoff">With a little hope, <span class="signoff-script">me</span></p>
         </div>
       </section>
