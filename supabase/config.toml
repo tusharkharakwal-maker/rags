@@ -1,0 +1,2 @@
+[functions.pigeon-chat]
+verify_jwt = false
