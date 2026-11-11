@@ -1,13 +1,11 @@
 (() => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const status = document.querySelector("#reply-status");
-  const retry = document.querySelector("#copy-again");
   const noteButton = document.querySelector("#open-note");
   const noteText = document.querySelector("#note-letter-text");
   const noteStatus = document.querySelector("#note-status");
   const noteHint = document.querySelector("#note-hint");
   const secondaryReply = document.querySelector(".reply-secondary");
-  let chosenReply = "";
   let secondaryIsMoving = false;
 
   function dodgeSecondaryReply() {
@@ -84,43 +82,17 @@
     noteHint.textContent = isOpen ? "tap to close" : "tap to open";
   });
 
-  async function copyReply(message) {
-    chosenReply = message;
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(message);
-      } else {
-        const helper = document.createElement("textarea");
-        helper.value = message;
-        helper.setAttribute("readonly", "");
-        helper.style.position = "fixed";
-        helper.style.opacity = "0";
-        document.body.appendChild(helper);
-        helper.select();
-        const copied = document.execCommand("copy");
-        helper.remove();
-        if (!copied) throw new Error("Clipboard unavailable");
-      }
-      status.textContent = `Copied: “${message}” Paste it into your message app.`;
-      retry.classList.remove("dn");
-    } catch (error) {
-      status.textContent = `Your reply is ready: “${message}” You can copy it from here.`;
-      retry.classList.remove("dn");
-    }
-  }
-
-  document.querySelectorAll("[data-reply]").forEach((button) => {
+  document.querySelectorAll(".reply-button").forEach((button) => {
     button.addEventListener("click", (event) => {
       if (button === secondaryReply) {
         event.preventDefault();
         dodgeSecondaryReply();
         return;
       }
-      copyReply(button.dataset.reply);
+      const recipient = button.dataset.smsRecipient;
+      status.textContent = `Opening Messages to ${recipient}.`;
+      window.location.href = `sms:${recipient}`;
     });
-  });
-  retry.addEventListener("click", () => {
-    if (chosenReply) copyReply(chosenReply);
   });
 
   if (prefersReducedMotion || !window.gsap || !window.ScrollTrigger) return;

@@ -181,7 +181,7 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
   left: 8%;
   display: flex;
   width: 84%;
-  height: 228px;
+  height: 340px;
   flex-direction: column;
   gap: 8px;
   padding: 17px 15px 12px;
@@ -194,15 +194,14 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
   transition: transform .72s cubic-bezier(.2,.8,.2,1), opacity .42s ease, visibility 0s linear .72s;
   pointer-events: none;
 }
-.letter-heading, .letter-signoff { font-family: var(--hand); }
+.letter-heading { font-family: var(--hand); }
 .letter-heading { color: var(--blue); font-size: 18px; line-height: 1.1; }
-.letter-message { color: #39414a; font-size: 11px; line-height: 1.5; }
-.letter-signoff { align-self: flex-end; margin-top: auto; color: var(--coral); font-size: 15px; transform: rotate(-4deg); }
+.letter-message { min-height: 0; flex: 1; overflow-y: auto; color: #39414a; font-size: 11px; line-height: 1.5; }
 .envelope.is-open .letter-sheet {
   z-index: 3;
   visibility: visible;
   opacity: 1;
-  transform: translateY(-142px);
+  transform: translateY(-120px);
   transition: transform .72s cubic-bezier(.2,.8,.2,1), opacity .42s ease, visibility 0s;
 }
 .envelope-flap {
@@ -300,9 +299,8 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
   .reply-secondary.is-dodging { transition: none; }
 }
 .reply-primary:active { transform: scale(.98); }
-.reply-button:focus-visible, .copy-again:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+.reply-button:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 .reply-status { min-height: 24px; margin: 18px auto 0; color: #3f5d89; font-size: 13px; font-weight: 600; }
-.copy-again { display: block; margin: -4px auto 0; padding: 0 0 4px; border: 0; border-bottom: 1px solid var(--blue); background: transparent; color: var(--blue); cursor: pointer; font-size: 12px; font-weight: 700; }
 .signoff { margin: 32px 0 0; color: #6f7780; font-size: 12px; }
 .signoff-script { display: inline-block; margin-left: 4px; color: var(--ink); font: 21px var(--hand); transform: rotate(-7deg); }
 .site-footer { display: flex; min-height: 54px; align-items: center; justify-content: space-between; padding: 0 24px; color: #7e858a; font-size: 10px; letter-spacing: .04em; }
@@ -340,7 +338,7 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
   .body-copy { margin-top: 23px; font-size: 15px; }
   .note-illustration { min-height: 390px; margin-top: 5px; }
   .envelope { width: min(80%, 350px); height: 220px; }
-  .letter-sheet { height: 238px; padding: 20px 18px 14px; }
+  .letter-sheet { height: 300px; padding: 20px 18px 14px; }
   .letter-message { font-size: 12px; }
   .note-one { top: 10%; left: 12%; }
   .note-two { right: 1%; bottom: 18%; font-size: 19px; }
