@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f2e9" />
+    <meta name="description" content="A little note, delivered just for you." />
+    <title>A little note for you</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body class="ma0">
+    <header class="site-header flex items-center justify-between ph4-ns ph3">
+      <a class="wordmark flex items-center" href="#home" aria-label="A little note, home">
+        <span class="wordmark-bird" aria-hidden="true">✳</span>
+        <span>the pigeon post</span>
+      </a>
+      <span class="postmark dn db-ns">A NOTE, JUST FOR YOU</span>
+      <a class="header-link" href="#reply">Your reply <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero min-vh-100 flex items-center" id="home" aria-labelledby="hero-title">
+        <div class="hero-inner w-100 mw8 center ph4-ns ph3 pv5">
+          <div class="hero-copy">
+            <p class="eyebrow">A LITTLE SOMETHING HAS ARRIVED</p>
+            <h1 id="hero-title">A small question<br />for <span class="scribble-underline">you.</span></h1>
+            <p class="hero-deck">Delivered by the least subtle pigeon in the neighborhood.</p>
+            <a class="text-link" href="#note">Open your note <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-art" aria-label="A doodled pigeon carrying a tiny envelope" role="img">
+            <div class="sun-stamp" aria-hidden="true">SPECIAL<br />DELIVERY</div>
+            <svg class="pigeon pigeon-hero" viewBox="0 0 480 390" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="flight-trail" d="M55 320C10 267 37 190 94 170" />
+              <!-- Tail feathers and rounded body give the bird a familiar pigeon silhouette. -->
+              <path d="M138 229C115 212 96 193 86 174C111 177 133 188 152 204C155 187 153 167 146 149C174 159 195 178 205 200" fill="#7F98B0" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M137 213C151 178 191 156 238 162C254 132 267 108 299 102C332 96 359 116 361 142C364 168 339 184 310 171C325 197 365 207 388 232C411 257 390 287 359 301C316 320 243 308 207 284C177 289 146 264 137 238" fill="#A9C3DA" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Pigeon wing with the two dark bars typical of a city pigeon. -->
+              <path d="M174 203C190 177 223 169 250 182C276 194 286 221 278 247C270 270 244 280 216 271C194 263 177 242 174 221" fill="#D5E0E7" stroke="#242B38" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M183 219C205 211 231 213 254 226M181 235C202 229 226 233 246 246" stroke="#657D91" stroke-width="6" stroke-linecap="round"/>
+              <path d="M265 153C273 140 284 130 297 124" stroke="#D9836C" stroke-width="7" stroke-linecap="round"/>
+              <path d="M299 102C314 101 326 107 333 117" stroke="#657D91" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="337" cy="127" r="5" fill="#242B38"/>
+              <circle cx="338.5" cy="125.5" r="1.5" fill="#FBF9F2"/>
+              <path d="M358 137L382 143L360 151C357 147 356 142 358 137Z" fill="#D9836C" stroke="#242B38" stroke-width="3.5" stroke-linejoin="round"/>
+              <path d="M207 283L203 317M249 301L247 329" stroke="#D9836C" stroke-width="5" stroke-linecap="round"/>
+              <path d="M190 321L203 317L214 323M235 332L247 329L259 334" stroke="#D9836C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M151 232C157 241 166 246 175 249M158 218C165 226 175 231 184 233" stroke="#657D91" stroke-width="3" stroke-linecap="round"/>
+              <path class="wing-line" d="M270 188C280 175 294 169 308 169" stroke="#657D91" stroke-width="3" stroke-linecap="round"/>
+              <path class="wing-line" d="M277 199C290 188 306 184 319 186" stroke="#657D91" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span class="art-caption">I brought this myself.</span>
+          </div>
+          <div class="hero-edge-note" aria-hidden="true">no stamps required</div>
+        </div>
+      </section>
+
+      <section class="note-section min-vh-100 flex items-center" id="note" aria-labelledby="note-title">
+        <div class="note-layout mw8 center w-100 ph4-ns ph3 pv6">
+          <div class="note-copy">
+            <p class="eyebrow">TO MY FAVORITE PERSON TO ASK</p>
+            <h2 id="note-title">A little note<br />for you.</h2>
+            <p class="body-copy">There's something inside. Tap the envelope and I'll tell you what I've been meaning to ask.</p>
+          </div>
+          <div class="note-illustration" aria-hidden="true">
+            <div class="string-loop"></div>
+            <button class="envelope" id="open-note" type="button" aria-label="Open the note" aria-expanded="false" aria-controls="note-letter-text">
+              <span class="letter-sheet" aria-hidden="true">
+                <span class="letter-heading">Dear you,</span>
+                <span class="letter-message">I've been thinking it would be lovely to spend a little time together. Nothing complicated. Just the two of us, catching up and making an ordinary day feel like a good one.</span>
+                <span class="letter-signoff">Hope you'll say yes</span>
+              </span>
+              <span class="envelope-flap" aria-hidden="true"></span>
+              <span class="envelope-heart" aria-hidden="true">♥</span>
+            </button>
+            <span class="hand-note note-one" id="note-hint">tap to open</span>
+            <span class="hand-note note-two">a little note for you</span>
+            <span class="sr-only" id="note-status" role="status" aria-live="polite"></span>
+            <p class="sr-only" id="note-letter-text" hidden>Dear you, I've been thinking it would be lovely to spend a little time together. Nothing complicated. Just the two of us, catching up and making an ordinary day feel like a good one. Hope you'll say yes.</p>
+            <svg class="tiny-bird" viewBox="0 0 110 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 50C17 34 34 26 49 31C58 16 77 13 89 25C101 37 92 54 79 60C67 66 51 60 43 53C34 64 19 62 13 50Z" fill="#A9C3DA" stroke="#242B38" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M44 32C54 33 61 39 63 47C70 39 80 37 89 41C83 47 78 52 71 56C64 51 56 50 49 54C44 48 41 39 44 32Z" fill="#F3DABF" stroke="#242B38" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="82" cy="29" r="2.5" fill="#242B38"/>
+              <path d="M95 35L107 39L96 43" fill="#E28B70" stroke="#242B38" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="ask-section min-vh-100 flex items-center" aria-labelledby="ask-title">
+        <div class="ask-layout mw8 center w-100 ph4-ns ph3 pv6">
+          <div class="ask-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <span class="sparkle sparkle-a">✳</span><span class="sparkle sparkle-b">✳</span>
+            <svg class="pigeon pigeon-ask" viewBox="0 0 480 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M125 212C119 178 138 142 176 128C192 79 243 57 278 83C313 110 303 154 276 179C321 164 369 185 384 224C396 256 377 289 343 304C301 322 247 310 218 286C187 314 148 302 125 277" fill="#A9C3DA" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M176 128C195 132 211 145 218 164C241 141 268 136 296 146C281 162 267 180 251 196C233 185 214 182 196 192C179 177 169 153 176 128Z" fill="#F3DABF" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M135 167C111 158 88 163 77 180C96 177 110 182 124 196" fill="#E28B70" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M277 92C292 68 321 64 338 82C349 94 346 113 335 123C324 132 307 131 298 121" fill="#A9C3DA" stroke="#242B38" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="319" cy="95" r="4" fill="#242B38"/><path d="M337 105L360 112L339 120" fill="#E28B70" stroke="#242B38" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M209 286L202 317M250 299L247 327" stroke="#242B38" stroke-width="5" stroke-linecap="round"/>
+              <path d="M188 320L204 317L214 324M234 330L247 327L259 335" stroke="#242B38" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M206 112C215 101 232 96 245 101M210 124C225 111 244 108 259 114" stroke="#657D91" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div class="tiny-envelope"><span>♥</span></div>
+          </div>
+          <div class="ask-copy">
+            <p class="eyebrow">THE ACTUAL QUESTION</p>
+            <h2 id="ask-title">Would you like to spend an afternoon with me?</h2>
+            <p class="body-copy">We can pick a day, find something nice to eat, and see where the conversation takes us.</p>
+            <a class="text-link" href="#reply">Tell me what you think <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="reply-section min-vh-100 flex items-center" id="reply" aria-labelledby="reply-title">
+        <div class="reply-inner mw7 center w-100 ph4-ns ph3 pv6">
+          <div class="reply-doodle" aria-hidden="true">
+            <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 57C17 41 34 32 50 36C57 20 78 17 91 30C103 43 94 61 80 67C66 73 51 67 44 61C34 72 19 69 16 57Z" fill="#F3DABF" stroke="#242B38" stroke-width="3.5" stroke-linejoin="round"/>
+              <path d="M49 37C58 38 65 44 66 51C73 45 83 43 91 47C86 52 80 58 74 61C67 56 61 55 54 59C49 54 46 45 49 37Z" fill="#A9C3DA" stroke="#242B38" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="85" cy="34" r="2.5" fill="#242B38"/><path d="M97 40L110 44L98 48" fill="#E28B70" stroke="#242B38" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M29 69L27 83M51 70L51 84M23 84L29 82L34 85M46 85L51 82L57 85" stroke="#242B38" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="eyebrow">YOUR TURN</p>
+          <h2 id="reply-title">I'll wait right here.</h2>
+          <p class="reply-prompt">Pick the answer that feels right. Your pigeon will carry it back.</p>
+          <div class="reply-actions flex flex-wrap justify-center">
+            <button class="reply-button reply-primary" type="button" data-reply="I'd love to spend an afternoon with you. Let's pick a day!">I'd love to</button>
+            <button class="reply-button reply-secondary" type="button" data-reply="I'd like that, but could we choose another day?">Could we pick another day?</button>
+          </div>
+          <p class="reply-status" id="reply-status" role="status" aria-live="polite"></p>
+          <button class="copy-again dn" id="copy-again" type="button">Copy my reply again</button>
+          <p class="signoff">With a little hope, <span class="signoff-script">me</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer ph4-ns ph3">
+      <span>Delivered with care</span><span class="footer-bird" aria-hidden="true">✳</span><span>End of note</span>
+    </footer>
+  </body>
+</html>
