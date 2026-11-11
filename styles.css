@@ -255,7 +255,7 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
 .tiny-envelope::before { position: absolute; top: -2px; right: 0; left: 0; height: 20px; border-bottom: 2px solid var(--ink); background: #e9bba6; clip-path: polygon(0 0, 100% 0, 50% 100%); content: ""; }
 .tiny-envelope span { position: absolute; z-index: 2; top: 11px; left: 17px; color: var(--coral); font-size: 10px; }
 
-.reply-section { position: relative; min-height: 710px; overflow: hidden; background: #e8edf0; text-align: center; }
+.reply-section { position: relative; min-height: 710px; background: #e8edf0; text-align: center; }
 .reply-section::before {
   position: absolute;
   top: 50%;
@@ -286,7 +286,20 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
 }
 .reply-primary { border-color: var(--blue); background: var(--blue); color: white; }
 .reply-secondary { background: transparent; color: var(--ink); }
-.reply-button:active { transform: scale(.98); }
+.reply-secondary.is-dodging {
+  position: fixed;
+  z-index: 20;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  margin: 0;
+  will-change: left, top;
+  transition: left .72s cubic-bezier(.22, .8, .24, 1), top .72s cubic-bezier(.22, .8, .24, 1);
+}
+.reply-secondary.is-dodging.is-gsap-dodging { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reply-secondary.is-dodging { transition: none; }
+}
+.reply-primary:active { transform: scale(.98); }
 .reply-button:focus-visible, .copy-again:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 .reply-status { min-height: 24px; margin: 18px auto 0; color: #3f5d89; font-size: 13px; font-weight: 600; }
 .copy-again { display: block; margin: -4px auto 0; padding: 0 0 4px; border: 0; border-bottom: 1px solid var(--blue); background: transparent; color: var(--blue); cursor: pointer; font-size: 12px; font-weight: 700; }
@@ -296,7 +309,7 @@ h1 { max-width: 740px; margin: 0 auto; font-size: clamp(58px, 16vw, 85px); line-
 .footer-bird { color: var(--blue); font-size: 16px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-.js-ready .hero-copy > *, .js-ready .hero-art > *, .js-ready .note-copy > *, .js-ready .note-illustration > *, .js-ready .ask-copy > *, .js-ready .ask-art > *, .js-ready .reply-inner > * { will-change: transform, opacity; }
+.js-ready .hero-copy > *, .js-ready .hero-art > *, .js-ready .note-copy > *, .js-ready .note-illustration > *, .js-ready .ask-copy > *, .js-ready .ask-art > *, .js-ready .reply-inner > *:not(.reply-actions) { will-change: transform, opacity; }
 
 @media (hover: hover) and (pointer: fine) {
   .header-link:hover span { transform: translate(2px, -2px); }

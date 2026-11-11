@@ -6,7 +6,72 @@
   const noteText = document.querySelector("#note-letter-text");
   const noteStatus = document.querySelector("#note-status");
   const noteHint = document.querySelector("#note-hint");
+  const secondaryReply = document.querySelector(".reply-secondary");
   let chosenReply = "";
+  let secondaryIsMoving = false;
+
+  function dodgeSecondaryReply() {
+    if (secondaryIsMoving) return;
+    secondaryIsMoving = true;
+
+    const rect = secondaryReply.getBoundingClientRect();
+    secondaryReply.parentElement.style.minHeight = `${secondaryReply.parentElement.offsetHeight}px`;
+    secondaryReply.classList.add("is-dodging");
+    secondaryReply.style.left = `${rect.left}px`;
+    secondaryReply.style.top = `${rect.top}px`;
+    secondaryReply.style.pointerEvents = "none";
+
+    const edge = 16;
+    const maxX = Math.max(edge, window.innerWidth - secondaryReply.offsetWidth - edge);
+    const maxY = Math.max(edge, window.innerHeight - secondaryReply.offsetHeight - edge);
+    let nextX = edge;
+    let nextY = edge;
+    for (let attempt = 0; attempt < 8; attempt += 1) {
+      nextX = edge + Math.random() * Math.max(0, maxX - edge);
+      nextY = edge + Math.random() * Math.max(0, maxY - edge);
+      if (Math.hypot(nextX - rect.left, nextY - rect.top) > 120) break;
+    }
+
+    const finishMove = () => {
+      secondaryReply.style.pointerEvents = "";
+      secondaryIsMoving = false;
+    };
+
+    if (window.gsap && !prefersReducedMotion) {
+      secondaryReply.classList.add("is-gsap-dodging");
+      gsap.to(secondaryReply, {
+        left: nextX,
+        top: nextY,
+        duration: 0.72,
+        ease: "power3.out",
+        overwrite: true,
+        onComplete: finishMove
+      });
+    } else if (prefersReducedMotion) {
+      secondaryReply.style.left = `${nextX}px`;
+      secondaryReply.style.top = `${nextY}px`;
+      finishMove();
+    } else {
+      requestAnimationFrame(() => {
+        secondaryReply.style.left = `${nextX}px`;
+        secondaryReply.style.top = `${nextY}px`;
+        window.setTimeout(finishMove, 720);
+      });
+    }
+  }
+
+  window.addEventListener("resize", () => {
+    if (!secondaryReply.classList.contains("is-dodging")) return;
+    if (window.gsap) gsap.killTweensOf(secondaryReply);
+    const rect = secondaryReply.getBoundingClientRect();
+    const edge = 16;
+    const maxX = Math.max(edge, window.innerWidth - rect.width - edge);
+    const maxY = Math.max(edge, window.innerHeight - rect.height - edge);
+    secondaryReply.style.left = `${Math.min(maxX, Math.max(edge, rect.left))}px`;
+    secondaryReply.style.top = `${Math.min(maxY, Math.max(edge, rect.top))}px`;
+    secondaryReply.style.pointerEvents = "";
+    secondaryIsMoving = false;
+  });
 
   noteButton.addEventListener("click", () => {
     const isOpen = noteButton.getAttribute("aria-expanded") !== "true";
@@ -45,7 +110,14 @@
   }
 
   document.querySelectorAll("[data-reply]").forEach((button) => {
-    button.addEventListener("click", () => copyReply(button.dataset.reply));
+    button.addEventListener("click", (event) => {
+      if (button === secondaryReply) {
+        event.preventDefault();
+        dodgeSecondaryReply();
+        return;
+      }
+      copyReply(button.dataset.reply);
+    });
   });
   retry.addEventListener("click", () => {
     if (chosenReply) copyReply(chosenReply);
@@ -108,7 +180,7 @@
     duration: 1,
     ease: "power2.out"
   });
-  gsap.from(".reply-inner > *", {
+  gsap.from(".reply-inner > *:not(.reply-actions)", {
     scrollTrigger: { trigger: ".reply-section", start: "top 72%" },
     y: 18,
     opacity: 0,
